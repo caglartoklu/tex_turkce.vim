@@ -1,6 +1,6 @@
 # tex_turkce.vim
 
-Converts Turkish characters to their Tex represention and back.
+Converts Turkish characters to their Tex representation and back.
 
 I wrote this plugin when I was working on my B.S. Thesis.
 It helped me much then, I hope it helps others too.

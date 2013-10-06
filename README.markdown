@@ -59,7 +59,7 @@ command `:TrToTex` and the result can be seen in lines 15,16,17.
 
 `:TrFromTex` would do the reverse.
 
-![tex_turkce1.png](https://raw.github.com/caglartoklu/tex_turkce.vim/media/tex_turkce1.png)
+![tex_turkce1.png](https://raw.github.com/caglartoklu/tex_turkce/media/tex_turkce1.png)
 
 
 ### Commands

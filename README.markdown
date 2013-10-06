@@ -6,10 +6,10 @@ I wrote this plugin when I was working on my B.S. Thesis.
 It helped me much then, I hope it helps others too.
 
 Home page:
-[https://github.com/caglartoklu/tex_turkce.vim](https://github.com/caglartoklu/tex_turkce.vim)
+https://github.com/caglartoklu/tex_turkce.vim
 
 Vim.org page:
-[http://www.vim.org/scripts/script.php?script_id=3029](http://www.vim.org/scripts/script.php?script_id=3029)
+http://www.vim.org/scripts/script.php?script_id=3029
 
 
 ## Changelog
@@ -67,8 +67,35 @@ command `:TrToTex` and the result can be seen in lines 15,16,17.
 `:TrToTex`
   Converts Turkish characters to their `.tex` representation.
 
+    ç       =>    \c{c}
+    Ç       =>    \c{C}
+    ı       =>    {\\i}
+    İ       =>    \.I
+    ğ       =>    \u{g}
+    Ğ       =>    \u{G}
+    ö       =>    \"o
+    Ö       =>    \"O
+    ş       =>    \c{s}
+    Ş       =>    \c{S}
+    ü       =>    \"u
+    Ü       =>    \"U
+
 `:TrFromTex`
   Converts `.tex` character representation of characters to Turkish.
+
+    \c{c}   =>    ç
+    \c{C}   =>    Ç
+    {\\i}   =>    ı
+    \.I     =>    İ
+    \u{g}   =>    ğ
+    \u{G}   =>    Ğ
+    \"o     =>    ö
+    \"O     =>    Ö
+    \c{s}   =>    ş
+    \c{S}   =>    Ş
+    \"u     =>    ü
+    \"U     =>    Ü
+
 
 
 ## Configuration

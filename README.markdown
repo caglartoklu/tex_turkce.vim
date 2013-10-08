@@ -1,6 +1,10 @@
 # tex_turkce.vim
 
-Converts Turkish characters to their Tex representation and back.
+Converts Turkish characters to their
+[TeX](https://en.wikipedia.org/wiki/TeX)
+and
+[HTML](https://en.wikipedia.org/wiki/Html)
+representations and back.
 
 I wrote this plugin when I was working on my B.S. Thesis.
 It helped me much then, I hope it helps others too.
@@ -49,10 +53,15 @@ For all other users, simply drop the `tex_turkce.vim` file to your
 
 ## Usage
 
-This plugin exposes two commands.
 Select a text, and execute the commands.
+Please note that if no text is choosen,
+whole file content is processed.
+When a command is executed, the characters will be replaced.
+If things get messed up somehow, simply press `u` for undo in
+[insert node](http://vimdoc.sourceforge.net/htmldoc/insert.html).
 
-When the plugin is executed, the characters will be replaced.
+
+### TeX Character Conversion
 
 In the following screenshot, lines 6,7,8 is replaced using the
 command `:TrToTex` and the result can be seen in lines 15,16,17.
@@ -62,51 +71,127 @@ command `:TrToTex` and the result can be seen in lines 15,16,17.
 ![tex_turkce1.png](https://raw.github.com/caglartoklu/tex_turkce/media/tex_turkce1.png)
 
 
+### HTML Character Conversion
+
+Whe natively typed Turkish characters are encoded using `:TrToHtml` command,
+
+![html_code1.png](https://raw.github.com/caglartoklu/tex_turkce/media/html_code1.png)
+
+this is what is seen on the web page when no any encoding applied:
+
+![html_webpage1.png](https://raw.github.com/caglartoklu/tex_turkce/media/html_webpage1.png)
+
+
 ### Commands
 
 `:TrToTex`
   Converts Turkish characters to their `.tex` representation.
 
-    ç       =>    \c{c}
-    Ç       =>    \c{C}
-    ı       =>    {\\i}
-    İ       =>    \.I
-    ğ       =>    \u{g}
-    Ğ       =>    \u{G}
-    ö       =>    \"o
-    Ö       =>    \"O
-    ş       =>    \c{s}
-    Ş       =>    \c{S}
-    ü       =>    \"u
-    Ü       =>    \"U
+    ç         =>    \c{c}
+    Ç         =>    \c{C}
+    ı         =>    {\\i}
+    İ         =>    \.I
+    ğ         =>    \u{g}
+    Ğ         =>    \u{G}
+    ö         =>    \"o
+    Ö         =>    \"O
+    ş         =>    \c{s}
+    Ş         =>    \c{S}
+    ü         =>    \"u
+    Ü         =>    \"U
 
 `:TrFromTex`
   Converts `.tex` character representation of characters to Turkish.
 
-    \c{c}   =>    ç
-    \c{C}   =>    Ç
-    {\\i}   =>    ı
-    \.I     =>    İ
-    \u{g}   =>    ğ
-    \u{G}   =>    Ğ
-    \"o     =>    ö
-    \"O     =>    Ö
-    \c{s}   =>    ş
-    \c{S}   =>    Ş
-    \"u     =>    ü
-    \"U     =>    Ü
+    \c{c}     =>    ç
+    \c{C}     =>    Ç
+    {\\i}     =>    ı
+    \.I       =>    İ
+    \u{g}     =>    ğ
+    \u{G}     =>    Ğ
+    \"o       =>    ö
+    \"O       =>    Ö
+    \c{s}     =>    ş
+    \c{S}     =>    Ş
+    \"u       =>    ü
+    \"U       =>    Ü
 
+`:TrToHTML`
+  Converts Turkish characters to their `.html` representation.
 
+    ç         =>    &ccedil;
+    Ç         =>    &Ccedil;
+    ı         =>    &#305;
+    İ         =>    &#304;
+    ğ         =>    &#287;
+    Ğ         =>    &#286;
+    ö         =>    &ouml;
+    Ö         =>    &Ouml;
+    ş         =>    &#351;
+    Ş         =>    &#350;
+    ü         =>    &uuml;
+    Ü         =>    &Uuml;
+
+`:TrFromHtml`
+  Converts `.html` character representation of characters to Turkish.
+
+    &ccedil;  => ç
+    &#231;    => ç
+    &Ccedil;  => Ç
+    &#199;    => Ç
+    &#305;    => ı
+    &#304;    => İ
+    &#287;    => ğ
+    &#286;    => Ğ
+    &ouml;    => ö
+    &#246;    => ö
+    &Ouml;    => Ö
+    &#214;    => Ö
+    &#351;    => ş
+    &#350;    => Ş
+    &uuml;    => ü
+    &#252;    => ü
+    &Uuml;    => Ü
+    &#220;    => Ü
 
 ## Configuration
 
 This plugin currently requires no configuration.
 
 
+## References
+
+### Turkish
+- https://en.wikipedia.org/wiki/Turkish_alphabet
+
+### TeX
+- https://en.wikipedia.org/wiki/TeX
+- https://en.wikipedia.org/wiki/LaTeX
+
+### HTML
+- https://en.wikipedia.org/wiki/Html
+- http://webdesign.about.com/od/localization/l/blhtmlcodes-tr.htm
+- http://character-code.com/turkish-html-codes.php
+
+### Vim
+This plugin uses
+[:help substitute](http://vimdoc.sourceforge.net/htmldoc/change.html#:substitute)
+command of Vim.
+
+Used flags are:
+
+    `g` : all occurences in the line.
+    `I` : do not ignore case for the pattern.
+    `e` : When the search pattern fails, do not issue an error message
+
+For reference, see
+[:help s_flags](vimdoc.sourceforge.net/htmldoc/change.html#:s_flags)
+
+
 ## License
 
 Licensed with 2-clause license ("Simplified BSD License" or "FreeBSD License").
-See the LICENSE file.
+See the [LICENSE](https://github.com/caglartoklu/tex_turkce/blob/master/LICENSE) file.
 
 
 ## Contact Info

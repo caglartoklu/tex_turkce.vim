@@ -17,6 +17,8 @@ command! -range=% TrToTex :call ConvertToTex(<f-line1>,<f-line2>)
 command! -range=% TrFromTex :call ConvertFromTex(<f-line1>,<f-line2>)
 command! -range=% TrToHtml :call ConvertToHtml(<f-line1>,<f-line2>)
 command! -range=% TrFromHtml :call ConvertFromHtml(<f-line1>,<f-line2>)
+command! -range=% TrTo :call ConvertToGeneric(<f-line1>,<f-line2>)
+command! -range=% TrFrom :call ConvertFromGeneric(<f-line1>,<f-line2>)
 
 
 function! s:SetEncoding()
@@ -125,4 +127,26 @@ function! ConvertFromHtml(lineStart, lineFinish)
     exec a:lineStart . ',' . a:lineFinish . 's/&#252;/ü/gIe'
     exec a:lineStart . ',' . a:lineFinish . 's/&Uuml;/Ü/gIe'
     exec a:lineStart . ',' . a:lineFinish . 's/&#220;/Ü/gIe'
+endfunction
+
+
+function! ConvertToGeneric(lineStart, lineFinish)
+    " generic function, calls the appropriate one
+    let ftype = &filetype
+    if ftype == 'tex'
+        call ConvertToTex(a:lineStart, a:lineFinish)
+    elseif ftype == 'html'
+        call ConvertToHtml(a:lineStart, a:lineFinish)
+    endif
+endfunction
+
+
+function! ConvertFromGeneric(lineStart, lineFinish)
+    " generic function, calls the appropriate one
+    let ftype = &filetype
+    if ftype == 'tex'
+        call ConvertFromTex(a:lineStart, a:lineFinish)
+    elseif ftype == 'html'
+        call ConvertFromHtml(a:lineStart, a:lineFinish)
+    endif
 endfunction

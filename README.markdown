@@ -18,6 +18,9 @@ http://www.vim.org/scripts/script.php?script_id=3029
 
 ## Changelog
 
+- 2013-10-30
+  - Added generic TrTo and TrFrom commands which calls the appropriate
+    conversion function according to the file type.
 - 2013-10-06
   - Conversion in selection instead of whole file.
   - If no selection is provided, whole file is used.

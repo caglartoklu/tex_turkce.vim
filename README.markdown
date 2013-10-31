@@ -172,25 +172,20 @@ this is what is seen on the web page when no any encoding applied:
 
     ç         =>    c
     Ç         =>    C
-
     ı         =>    i
     ý         =>    i
     İ         =>    I
     Ý         =>    I
-
     ğ         =>    g
     ð         =>    g
     Ğ         =>    G
     Ð         =>    G
-
     ö         =>    o
     Ö         =>    O
-
     ş         =>    s
     þ         =>    s
     Ş         =>    S
     Þ         =>    S
-
     ü         =>    u
     Ü         =>    U
 

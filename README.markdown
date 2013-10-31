@@ -20,9 +20,10 @@ http://www.vim.org/scripts/script.php?script_id=3029
 
 - 2013-10-31
   - Added `TrToAnsi` command.
-    This has no *from* function since the change is irreversible
-    unless undoed. This command will simply convert Turkish
+    This command will convert Turkish
     characters with accents to similar ones in ANSI.
+    This has no *from* function since the change is irreversible
+    unless undoed.
   - Added warnings if TrTo or TrFrom does not find a suitable
     converter function.
 - 2013-10-30
@@ -145,24 +146,54 @@ this is what is seen on the web page when no any encoding applied:
 `:TrFromHtml`
   Converts `.html` character representation of characters to Turkish.
 
-    &ccedil;  => ç
-    &#231;    => ç
-    &Ccedil;  => Ç
-    &#199;    => Ç
-    &#305;    => ı
-    &#304;    => İ
-    &#287;    => ğ
-    &#286;    => Ğ
-    &ouml;    => ö
-    &#246;    => ö
-    &Ouml;    => Ö
-    &#214;    => Ö
-    &#351;    => ş
-    &#350;    => Ş
-    &uuml;    => ü
-    &#252;    => ü
-    &Uuml;    => Ü
-    &#220;    => Ü
+    &ccedil;  =>    ç
+    &#231;    =>    ç
+    &Ccedil;  =>    Ç
+    &#199;    =>    Ç
+    &#305;    =>    ı
+    &#304;    =>    İ
+    &#287;    =>    ğ
+    &#286;    =>    Ğ
+    &ouml;    =>    ö
+    &#246;    =>    ö
+    &Ouml;    =>    Ö
+    &#214;    =>    Ö
+    &#351;    =>    ş
+    &#350;    =>    Ş
+    &uuml;    =>    ü
+    &#252;    =>    ü
+    &Uuml;    =>    Ü
+    &#220;    =>    Ü
+
+
+`:TrToAnsi`
+    This command will convert Turkish
+    characters with accents to similar ones in ANSI.
+
+    ç         =>    c
+    Ç         =>    C
+
+    ı         =>    i
+    ý         =>    i
+    İ         =>    I
+    Ý         =>    I
+
+    ğ         =>    g
+    ð         =>    g
+    Ğ         =>    G
+    Ð         =>    G
+
+    ö         =>    o
+    Ö         =>    O
+
+    ş         =>    s
+    þ         =>    s
+    Ş         =>    S
+    Þ         =>    S
+
+    ü         =>    u
+    Ü         =>    U
+
 
 ## Configuration
 

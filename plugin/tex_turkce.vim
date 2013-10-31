@@ -17,6 +17,7 @@ command! -range=% TrToTex :call ConvertToTex(<f-line1>,<f-line2>)
 command! -range=% TrFromTex :call ConvertFromTex(<f-line1>,<f-line2>)
 command! -range=% TrToHtml :call ConvertToHtml(<f-line1>,<f-line2>)
 command! -range=% TrFromHtml :call ConvertFromHtml(<f-line1>,<f-line2>)
+command! -range=% TrToAnsi :call ConvertToAnsi(<f-line1>,<f-line2>)
 command! -range=% TrTo :call ConvertToGeneric(<f-line1>,<f-line2>)
 command! -range=% TrFrom :call ConvertFromGeneric(<f-line1>,<f-line2>)
 
@@ -130,6 +131,42 @@ function! ConvertFromHtml(lineStart, lineFinish)
 endfunction
 
 
+function! ConvertToAnsi(lineStart, lineFinish)
+    " Converts Turkish characters with accents to
+    " similar ones in ANSI.
+    " This option is irreversible unless you use undo.
+    call s:SetEncoding()
+
+    exec a:lineStart . ',' . a:lineFinish . 's/ç/c/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ç/C/gIe'
+
+    exec a:lineStart . ',' . a:lineFinish . 's/ı/i/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/ý/i/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/İ/I/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ý/I/gIe'
+
+    exec a:lineStart . ',' . a:lineFinish . 's/ğ/g/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/ð/g/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ğ/G/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ð/G/gIe'
+
+    exec a:lineStart . ',' . a:lineFinish . 's/ö/o/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ö/O/gIe'
+
+    " exec a:lineStart . ',' . a:lineFinish . 's/ş/$/gIe'
+    " exec a:lineStart . ',' . a:lineFinish . 's/þ/$/gIe'
+    " exec a:lineStart . ',' . a:lineFinish . 's/Ş/$/gIe'
+    " exec a:lineStart . ',' . a:lineFinish . 's/Þ/$/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/ş/s/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/þ/s/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ş/S/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Þ/S/gIe'
+
+    exec a:lineStart . ',' . a:lineFinish . 's/ü/u/gIe'
+    exec a:lineStart . ',' . a:lineFinish . 's/Ü/U/gIe'
+endfunction
+
+
 function! ConvertToGeneric(lineStart, lineFinish)
     " generic function, calls the appropriate one
     let ftype = &filetype
@@ -137,6 +174,8 @@ function! ConvertToGeneric(lineStart, lineFinish)
         call ConvertToTex(a:lineStart, a:lineFinish)
     elseif ftype == 'html'
         call ConvertToHtml(a:lineStart, a:lineFinish)
+    else
+        echo "No suitable tex_turkce converter found."
     endif
 endfunction
 
@@ -148,5 +187,7 @@ function! ConvertFromGeneric(lineStart, lineFinish)
         call ConvertFromTex(a:lineStart, a:lineFinish)
     elseif ftype == 'html'
         call ConvertFromHtml(a:lineStart, a:lineFinish)
+    else
+        echo "No suitable tex_turkce converter found."
     endif
 endfunction

@@ -18,6 +18,13 @@ http://www.vim.org/scripts/script.php?script_id=3029
 
 ## Changelog
 
+- 2013-10-31
+  - Added `TrToAnsi` command.
+    This has no *from* function since the change is irreversible
+    unless undoed. This command will simply convert Turkish
+    characters with accents to similar ones in ANSI.
+  - Added warnings if TrTo or TrFrom does not find a suitable
+    converter function.
 - 2013-10-30
   - Added generic TrTo and TrFrom commands which calls the appropriate
     conversion function according to the file type.

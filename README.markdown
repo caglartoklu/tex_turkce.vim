@@ -24,10 +24,10 @@ http://www.vim.org/scripts/script.php?script_id=3029
     characters with accents to similar ones in ANSI.
     This has no *from* function since the change is irreversible
     unless undoed.
-  - Added warnings if TrTo or TrFrom does not find a suitable
+  - Added warnings if `TrTo` or `TrFrom` does not find a suitable
     converter function.
 - 2013-10-30
-  - Added generic TrTo and TrFrom commands which calls the appropriate
+  - Added generic `TrTo` and `TrFrom` commands which calls the appropriate
     conversion function according to the file type.
 - 2013-10-06
   - Conversion in selection instead of whole file.
@@ -35,8 +35,10 @@ http://www.vim.org/scripts/script.php?script_id=3029
   - Commands renamed as `TrToTex` and `TrFromTex`
   - The script is now a `plugin` instead of `ftplugin`, since it will
     not be limited with `.tex` files in the future.
-  - Hosted the code on Github, all the development will be on Github from now on.
-  - Vim.org will be updated if a major change happens.
+  - Hosted the code on [Github](https://github.com/),
+    all the development will be on Github from now on.
+  - [vim.org](http://www.vim.org/scripts/script.php?script_id=3029)
+    will be updated if a major change happens.
   - The license has been changed from GPL to 2-clause FreeBSD.
   - The file is saved in UNIX file format instead of Windows.
 - 0.0.1, 2010-03-27

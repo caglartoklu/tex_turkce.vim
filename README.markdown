@@ -1,10 +1,9 @@
 # tex_turkce.vim
 
-Converts Turkish characters to their
-[TeX](https://en.wikipedia.org/wiki/TeX)
-and
-[HTML](https://en.wikipedia.org/wiki/Html)
-representations and back.
+Converts Turkish characters between
+[TeX](https://en.wikipedia.org/wiki/TeX),
+[HTML](https://en.wikipedia.org/wiki/Html),
+ANSI and Turkish accent representations and back.
 
 I wrote this plugin when I was working on my B.S. Thesis.
 It helped me much then, I hope it helps others too.
@@ -18,6 +17,8 @@ http://www.vim.org/scripts/script.php?script_id=3029
 
 ## Changelog
 
+- 2019-03-14
+  - Added `TexTurkceReplaceOneChar` command.
 - 2013-10-31
   - Added `TrToAnsi` command.
     This command will convert Turkish
@@ -97,8 +98,9 @@ this is what is seen on the web page when no any encoding applied:
 
 ### Commands
 
-`:TrToTex`
-  Converts Turkish characters to their `.tex` representation.
+**`:TrToTex`**
+
+Converts Turkish characters to their `.tex` representation.
 
     ç         =>    \c{c}
     Ç         =>    \c{C}
@@ -113,8 +115,9 @@ this is what is seen on the web page when no any encoding applied:
     ü         =>    \"u
     Ü         =>    \"U
 
-`:TrFromTex`
-  Converts `.tex` character representation of characters to Turkish.
+**`:TrFromTex`**
+
+Converts `.tex` character representation of characters to Turkish.
 
     \c{c}     =>    ç
     \c{C}     =>    Ç
@@ -129,8 +132,9 @@ this is what is seen on the web page when no any encoding applied:
     \"u       =>    ü
     \"U       =>    Ü
 
-`:TrToHTML`
-  Converts Turkish characters to their `.html` representation.
+**`:TrToHTML`**
+
+Converts Turkish characters to their `.html` representation.
 
     ç         =>    &ccedil;
     Ç         =>    &Ccedil;
@@ -145,8 +149,9 @@ this is what is seen on the web page when no any encoding applied:
     ü         =>    &uuml;
     Ü         =>    &Uuml;
 
-`:TrFromHtml`
-  Converts `.html` character representation of characters to Turkish.
+**`:TrFromHtml`**
+
+Converts `.html` character representation of characters to Turkish.
 
     &ccedil;  =>    ç
     &#231;    =>    ç
@@ -168,9 +173,10 @@ this is what is seen on the web page when no any encoding applied:
     &#220;    =>    Ü
 
 
-`:TrToAnsi`
-    This command will convert Turkish
-    characters with accents to similar ones in ANSI.
+**`:TrToAnsi`**
+
+This command will convert Turkish
+characters with accents to similar ones in ANSI.
 
     ç         =>    c
     Ç         =>    C
@@ -191,10 +197,30 @@ this is what is seen on the web page when no any encoding applied:
     ü         =>    u
     Ü         =>    U
 
+**`:TexTurkceReplaceOneChar`**
+
+In normal mode, if the character is one of the ANSI characters below,
+it converts a single character to its Turkish accent counterpart.
+For all the other characters, it has no effect.
+This command allows Turkish accent output when your keyboard does not support Turkish character set.
+
+    g         =>    ğ
+    u         =>    ü
+    s         =>    ş
+    i         =>    ı
+    o         =>    ö
+    c         =>    ç
+
 
 ## Configuration
 
-This plugin currently requires no configuration.
+You can use the following block for configuration:
+
+    " { Plugin 'caglartoklu/tex_turkce.vim'
+        let g:text_turkce_advance_to_next_character = 1
+        " nmap <leader>tr : TexTurkceReplaceOneChar<CR>
+        nmap tr : TexTurkceReplaceOneChar<CR>
+    " }
 
 
 ## References
@@ -231,10 +257,3 @@ For reference, see
 Licensed with 2-clause license ("Simplified BSD License" or "FreeBSD License").
 See the [LICENSE](https://github.com/caglartoklu/tex_turkce/blob/master/LICENSE) file.
 
-
-## Contact Info
-
-You can find me on
-[Google+](https://plus.google.com/108566243864924912767/posts)
-
-Feel free to send bug reports, or ask questions.
